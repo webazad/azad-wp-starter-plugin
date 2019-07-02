@@ -29,6 +29,16 @@ if(! defined('ABSPATH')){
 // FOURTH WAY
 if(! defined('ABSPATH')){
     die('write the message here...');
-} 
+}
 // FIFTH WAY
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+// SIXTH WAY
 defined('ABSPATH') || exit;
+/**
+ * Currently plugin version.
+ * Start at version 1.0.0
+ * Rename this for your plugin and update it as you release new versions.
+ */
+define( 'BOILERPLATE_VERSION', '1.0.0' );
