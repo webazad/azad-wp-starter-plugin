@@ -43,8 +43,8 @@ defined('ABSPATH') || exit;
  */
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
-if(class_exists('Azad_Nice_Scroll')){
-    final class Azad_Nice_Scroll{
+if(class_exists('Azad_WP_tStarter_Plugin')){
+    final class Azad_WP_tStarter_Plugin{
 		public static $instance = null;
         public function __construct(){
             add_action('admin_enqueue_scripts',array($this,'azad_admin_acripts'));
@@ -75,9 +75,9 @@ if(class_exists('Azad_Nice_Scroll')){
         public function __destruct(){}
     }
 }
-if(! function_exists('load_azad_nice_scroll')){
-    function load_azad_nice_scroll(){
-        return Azad_Nice_Scroll::_get_instance();
+if(! function_exists('load_azad_wp_starter_plugin')){
+    function load_azad_wp_starter_plugin(){
+        return Azad_WP_tStarter_Plugin::_get_instance();
     }
 }
-$GLOBALS['load_azad_nice_scroll'] = load_azad_nice_scroll();
+$GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
