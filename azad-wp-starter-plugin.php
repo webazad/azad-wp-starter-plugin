@@ -56,9 +56,14 @@ if(class_exists('Azad_WP_Starter_Plugin')){
         }
         public function constants(){}
         public function i18n(){}
-		public function includes(){}
+		public function includes(){
+			require_once(plugin_dir_path(__FILE__).'/admin/Azad_Display.php');
+		}
 		public function azad_admin(){}
-		public function azad_public(){}
+		public function azad_public(){
+			$instance = call_user_func(array(get_class($GLOBALS['azad_public']),'_get_instance'));
+            $instance->azad_footer();
+		}
 		public function azad_admin_acripts(){
 			wp_register_script( 'azad-nice-scroll', plugins_url( 'js/nicescroll.js', __FILE__ ), 'jquery', 1.0, true );
             wp_enqueue_script('jquery');
