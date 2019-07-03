@@ -43,19 +43,22 @@ defined('ABSPATH') || exit;
  */
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
-if(class_exists('Azad_WP_tStarter_Plugin')){
-    final class Azad_WP_tStarter_Plugin{
+if(class_exists('Azad_WP_Starter_Plugin')){
+    final class Azad_WP_Starter_Plugin{
 		public static $instance = null;
         public function __construct(){
+			add_action('plugins_loaded',array($this,'constants'),1);
+            add_action('plugins_loaded',array($this,'i18n'),2);
+            add_action('plugins_loaded',array($this,'includes'),3);
+            add_action('plugins_loaded',array($this,'admin'),4);
             add_action('admin_enqueue_scripts',array($this,'azad_admin_acripts'));
             add_action('wp_enqueue_scripts',array($this,'azad_public_acripts'));
         }
-        public function includes(){
-			
-        }
-		public function init(){
-			
-        }
+        public function constants(){}
+        public function i18n(){}
+		public function includes(){}
+		public function azad_admin(){}
+		public function azad_public(){}
 		public function azad_admin_acripts(){
 			wp_register_script( 'azad-nice-scroll', plugins_url( 'js/nicescroll.js', __FILE__ ), 'jquery', 1.0, true );
             wp_enqueue_script('jquery');
@@ -77,7 +80,7 @@ if(class_exists('Azad_WP_tStarter_Plugin')){
 }
 if(! function_exists('load_azad_wp_starter_plugin')){
     function load_azad_wp_starter_plugin(){
-        return Azad_WP_tStarter_Plugin::_get_instance();
+        return Azad_WP_Starter_Plugin::_get_instance();
     }
 }
 $GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
