@@ -9,6 +9,7 @@ Author Email: webdevazad@gmail.com
 Version: 0.0.0.1
 Text Domain: azad-wp-starter-plugin
 */ 
+// EXIT IF ACCESSED DIRECTLY
 // SOME WAYS TO WRITE DENY CODE
 // FIRST WAY
 if(! defined('ABSPATH')){
@@ -26,21 +27,21 @@ if(! defined('ABSPATH')){
 if(! defined('ABSPATH')){
     die();
 }
-// FOURTH WAY
+// FIFTH WAY
 if(! defined('ABSPATH')){
     die('write the message here...');
 }
-// FIFTH WAY
+// SIXTH WAY
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-// SIXTH WAY
+// SEVENTH WAY
 defined('ABSPATH') || exit;
-/**
- * Currently plugin version.
- * Start at version 1.0.0
- * Rename this for your plugin and update it as you release new versions.
- */
+// EIGHTH WAY
+if(! defined('ABSPATH')) exit;
+// NINETH WAY
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
+
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
 if(class_exists('Azad_WP_Starter_Plugin')){

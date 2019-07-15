@@ -22,21 +22,19 @@ function azad_scroll_top_styles_scripts(){
     wp_enqueue_style('azad-scroll-top-admin',plugins_url('assets/css/scroll-top-admin.css',dirname(__FILE__)),array('wp-color-picker'),null);
     wp_enqueue_script('azad-scroll-top-script',plugins_url('assets/js/scroll-top-admin.js',dirname(__FILE__)),array('jquery','wp-color-picker'),null,true);
 }
-function azad_scroll_top_register_settings(){
+function azad_wp_starter_plugin_settings(){
     register_setting(
             'azad_scroll_top_settings',
             'azad_scroll_top_plugin_settings',
             'azad_scroll_top_plugin_settings_validate'
     );
-}
-add_action('admin_init','azad_scroll_top_register_settings');
-function azad_scroll_top_setting_sections_fields(){
+
     // Add general section.
     add_settings_section(
-            'azad_scroll_top_general_settings',
-            '',
-            '__return_false',
-            'azad_scroll_top_settings_page',
+        'azad_scroll_top_general_settings',
+        '',
+        '__return_false',
+        'azad_scroll_top_settings_page',
     );
     // Add enable/disable checkbox setting field.
     add_settings_field(
@@ -48,33 +46,9 @@ function azad_scroll_top_setting_sections_fields(){
     );
     // Add background setting field.
     add_settings_field(
-            'azad_scroll_top_type',
-            esc_html__('Type:','ast'),
-            'azad_scroll_top_type_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add position setting field.
-    add_settings_field(
-            'azad_scroll_top_position',
-            esc_html__('Position:','ast'),
-            'azad_scroll_top_position_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add background setting field.
-    add_settings_field(
             'azad_scroll_top_bg_color',
             esc_html__('Background Color:','ast'),
             'azad_scroll_top_bg_color_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add color setting field.
-    add_settings_field(
-            'azad_scroll_top_color',
-            esc_html__('Icon/Text Color:','ast'),
-            'azad_scroll_top_color_field',
             'azad_scroll_top_settings_page',
             'azad_scroll_top_general_settings'
     );
@@ -88,46 +62,14 @@ function azad_scroll_top_setting_sections_fields(){
     );
     // Add animation setting field.
     add_settings_field(
-            'azad_scroll_top_animation',
-            esc_html__('Animation:','ast'),
-            'azad_scroll_top_animation_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add animation setting field.
-    add_settings_field(
             'azad_scroll_top_speed',
             esc_html__('Speed:','ast'),
             'azad_scroll_top_speed_field',
             'azad_scroll_top_settings_page',
             'azad_scroll_top_general_settings'
     );
-    // Add animation setting field.
-    add_settings_field(
-            'azad_scroll_top_distance',
-            esc_html__('Distance:','ast'),
-            'azad_scroll_top_distance_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add animation setting field.
-    add_settings_field(
-            'azad_scroll_top_target',
-            esc_html__('Target(optional):','ast'),
-            'azad_scroll_top_target_field',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
-    // Add animation setting field.
-    add_settings_field(
-            'azad_scroll_top_css',
-            esc_html__('Custom CSS:','ast'),
-            'azad_scroll_top_css_filed',
-            'azad_scroll_top_settings_page',
-            'azad_scroll_top_general_settings'
-    );
 }
-add_action('admin_init','azad_scroll_top_setting_sections_fields');
+add_action('admin_init','azad_wp_starter_plugin_settings');
 
 function azad_scroll_top_enable_field(){ 
     $settings = azad_scroll_top_get_plugin_settings( 'azad_scroll_top_enable' );
