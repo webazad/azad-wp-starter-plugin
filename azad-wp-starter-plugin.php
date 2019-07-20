@@ -41,6 +41,10 @@ defined('ABSPATH') || exit;
 if(! defined('ABSPATH')) exit;
 // NINETH WAY
 if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
+// TENTH WAY
+if(! function_exists('add_action')){
+	die();
+}
 
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
