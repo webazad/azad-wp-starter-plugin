@@ -46,6 +46,34 @@ if(! function_exists('add_action')){
 	die();
 }
 
+use Inc\Admin\Activate;
+use Inc\Admin\Deactivate;
+// use Inc\Admin\Uninstall;
+
+function activate_azad(){
+    Activate::activate();
+}
+register_activation_hook(__FILE__,'activate_azad');
+
+function deactivate_aazad(){
+    Deactivate::deactivate();
+}
+register_deactivation_hook(__FILE__,'deactivate_aazad');
+
+// function uninstall_azad(){
+//     Uninstall::uninstall();
+// }
+// register_uninstall_hook(__FILE__,'uninstall_azad');
+
+if(file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
+    require_once dirname(__FILE__) . '/vendor/autoload.php';
+}
+
+if ( class_exists( 'Inc\\Init' ) ) :    
+    Inc\Init::register_services();
+endif;
+
+
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
 if(class_exists('Azad_WP_Starter_Plugin')){
@@ -70,6 +98,15 @@ if(class_exists('Azad_WP_Starter_Plugin')){
             $instance->azad_footer();
 		}
 		public function azad_admin_acripts(){
+			
+			wp_register_style('id','url','dep','version','bool');
+            wp_register_style('id',plugins_url(''),'dep','version','bool');
+            wp_register_style('id','url','dep','version','bool');
+            wp_enqueue_style('id');
+            wp_register_script('id','url','dep','version','bool');
+            wp_register_script('id',plugins_url(''),'dep','version','bool');
+            wp_enqueue_script('id');
+			
 			wp_register_script( 'azad-nice-scroll', plugins_url( 'js/nicescroll.js', __FILE__ ), 'jquery', 1.0, true );
             wp_enqueue_script('jquery');
             wp_enqueue_script('azad-nice-scroll');
@@ -94,3 +131,8 @@ if(! function_exists('load_azad_wp_starter_plugin')){
     }
 }
 $GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
+
+
+register_activation_hook(__FILE__,array('AlicadddPlugin','activate_plugin'));
+register_deactivation_hook(__FILE__,array('AlicadddPlugin','deactivate_plugin'));
+register_uninstall_hook(__FILE__,array('AlicadddPlugin','uninstall_plugin'));
