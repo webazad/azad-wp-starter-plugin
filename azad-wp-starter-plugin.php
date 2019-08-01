@@ -136,3 +136,12 @@ $GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
 register_activation_hook(__FILE__,array('AlicadddPlugin','activate_plugin'));
 register_deactivation_hook(__FILE__,array('AlicadddPlugin','deactivate_plugin'));
 register_uninstall_hook(__FILE__,array('AlicadddPlugin','uninstall_plugin'));
+
+// WAY TO REMOVE DASHBOARD META BOX
+function azad_remove_meta_box(){
+    // remove_meta_box('dashboard_activity','dashboard','normal'); // Remove activity
+	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+	// remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+    // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now / at a glance
+}
+add_action('wp_dashboard_setup','azad_remove_meta_box');
