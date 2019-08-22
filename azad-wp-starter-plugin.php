@@ -76,7 +76,7 @@ endif;
 
 define( 'BOILERPLATE_VERSION', '1.0.0' );
 
-if(class_exists('Azad_WP_Starter_Plugin')){
+if(! class_exists('Azad_WP_Starter_Plugin')){
     final class Azad_WP_Starter_Plugin{
 		public static $instance = null;
         public function __construct(){
