@@ -11,6 +11,8 @@ License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: azad-wp-starter-plugin
 Domain Path: /languages
+
+@package: azad-wp-starter-plugin
 */ 
 
 // EXIT IF ACCESSED DIRECTLY
