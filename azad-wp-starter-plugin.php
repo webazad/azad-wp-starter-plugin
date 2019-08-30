@@ -2,13 +2,17 @@
 /* 
 Plugin Name: Azad WP Starter Plugin
 Description: Description will go here...
-Plugin URi: gittechs.com/plugin/azad-wp-starter-plugin 
+Plugin URI: gittechs.com/plugin/azad-wp-starter-plugin 
 Author: Md. Abul Kalam Azad
 Author URI: gittechs.com/author
 Author Email: webdevazad@gmail.com
 Version: 0.0.0.1
+License: GPL2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: azad-wp-starter-plugin
+Domain Path: /languages
 */ 
+
 // EXIT IF ACCESSED DIRECTLY
 // SOME WAYS TO WRITE DENY CODE
 // FIRST WAY
