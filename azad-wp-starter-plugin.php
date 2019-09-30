@@ -79,8 +79,14 @@ if ( class_exists( 'Inc\\Init' ) ) :
     Inc\Init::register_services();
 endif;
 
+require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+$plugin_data = get_plugin_data( __FILE__ );
 
-define( 'BOILERPLATE_VERSION', '1.0.0' );
+define( 'AZAD_WP_STARTER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'AZAD_WP_STARTER_PLUGIN_VERSION_PATH', plugin_dir_path( __FILE__ ) );
+define( 'AZAD_WP_STARTER_PLUGIN_VERSION_PLUGIN', plugin_basename( __FILE__ ) );
+define( 'AZAD_WP_STARTER_PLUGIN_VERSION', $plugin_data['Version'] );
+define( 'AZAD_WP_STARTER_PLUGIN_NAME', $plugin_data['Name'] );
 
 if(! class_exists('Azad_WP_Starter_Plugin')){
     final class Azad_WP_Starter_Plugin{
