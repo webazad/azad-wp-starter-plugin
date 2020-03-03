@@ -84,6 +84,7 @@ $plugin_data = get_plugin_data( __FILE__ );
 
 define( 'AZAD_WP_STARTER_PLUGIN_NAME', $plugin_data['Name'] );
 define( 'AZAD_WP_STARTER_PLUGIN_VERSION', $plugin_data['Version'] );
+define( 'AZAD_WP_STARTER_PLUGIN_TEXTDOMAIN', $plugin_data['TextDomain'] );
 define( 'AZAD_WP_STARTER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AZAD_WP_STARTER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'AZAD_WP_STARTER_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
