@@ -245,3 +245,30 @@ function my_add_google_link(){
 }
 add_action('wp_before_admin_bar_render','my_add_google_link');
 
+// HOW TO CHANGE CUSTOM POST MENU ICON
+function dwwp_alter_book_icons($args){
+    $args['menu_icon'] = 'dashicons-book-alt';
+    return $args;
+}
+add_filter('dwwp_post_type_args','dwwp_alter_book_icons');
+
+add_action('wp_dashboard_setup','azad_remove_meta_box');
+function dwwp_add_google_link(){
+    global $wp_admin_bar;
+    $args = array(
+        'id'=>'google_analytics',
+        'title'=>'Google Analytics',
+        'href'=>'http://google.com'
+    );
+    $wp_admin_bar->add_menu($args);
+}
+add_action('wp_before_admin_bar_render','dwwp_add_google_link');
+
+
+// WAY TO REMOVE DASHBOARD META BOX
+function azad_remove_meta_box(){
+    // remove_meta_box('dashboard_activity','dashboard','normal'); // Remove activity
+	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
+	// remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
+    // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now / at a glance
+}

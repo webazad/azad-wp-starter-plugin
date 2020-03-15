@@ -3,12 +3,12 @@ namespace Inc\Admin;
 // EXIT IF ACCESSED DIRECTLY
 defined('ABSPATH') || exit;
 
-if ( ! class_exists( 'Deactivate' ) ) :
+if ( ! class_exists( 'Deactivator' ) ) :
 
-    class Deactivate{
+    class Deactivator{
         //public $countries = null;
         //public function __construct() {}
-        public static function deactivate() {
+        public static function deactivator() {
             delete_option('alecaddd_plugin');
         }
         //public function __destruct() {}

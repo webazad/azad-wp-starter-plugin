@@ -111,17 +111,15 @@ if(! class_exists('Azad_WP_Starter_Plugin')){
             $instance->azad_footer();
 		}
 		public function azad_admin_acripts(){
-			
-			wp_register_style('id','url','dep','version','bool');
             wp_register_style('id',plugins_url(''),'dep','version','bool');
-            wp_register_style('id','url','dep','version','bool');
             wp_enqueue_style('id');
-            wp_register_script('id','url','dep','version','bool');
+			
             wp_register_script('id',plugins_url(''),'dep','version','bool');
             wp_enqueue_script('id');
 			
-			wp_register_script( 'azad-nice-scroll', plugins_url( 'js/nicescroll.js', __FILE__ ), 'jquery', 1.0, true );
-            wp_enqueue_script('jquery');
+			wp_enqueue_script('jquery');
+			
+			wp_register_script( 'azad-nice-scroll', plugins_url( 'js/nicescroll.js', __FILE__ ), 'jquery', 1.0, true );            
             wp_enqueue_script('azad-nice-scroll');
         }
         public function azad_public_acripts(){
@@ -145,31 +143,25 @@ if(! function_exists('load_azad_wp_starter_plugin')){
 }
 $GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
 
-
 register_activation_hook(__FILE__,array('AlicadddPlugin','activate_plugin'));
 register_deactivation_hook(__FILE__,array('AlicadddPlugin','deactivate_plugin'));
 register_uninstall_hook(__FILE__,array('AlicadddPlugin','uninstall_plugin'));
 
-// WAY TO REMOVE DASHBOARD META BOX
-function azad_remove_meta_box(){
-    // remove_meta_box('dashboard_activity','dashboard','normal'); // Remove activity
-	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );  // Quick Press
-	// remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );   // WordPress blog
-    // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // Right Now / at a glance
+if ( ! function_exists( 'ast_safe_welcome_redirect' ) ) {
+	add_action( 'admin_init', 'ast_safe_welcome_redirect' );
+	function ast_safe_welcome_redirect() {
+		if ( ! get_transient( '_welcome_redirect_ast' ) ) {
+			return;
+		}
+		delete_transient( '_welcome_redirect_ast' );
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+			return;
+		}
+		wp_safe_redirect( add_query_arg(
+			array(
+				'page' => 'azad_scroll_top_settings_page'
+				),
+			admin_url( 'admin.php' )
+		) );
+	}
 }
-add_action('wp_dashboard_setup','azad_remove_meta_box');
-function dwwp_add_google_link(){
-    global $wp_admin_bar;
-    $args = array(
-        'id'=>'google_analytics',
-        'title'=>'Google Analytics',
-        'href'=>'http://google.com'
-    );
-    $wp_admin_bar->add_menu($args);
-}
-add_action('wp_before_admin_bar_render','dwwp_add_google_link');
-function dwwp_alter_book_icons($args){
-    $args['menu_icon'] = 'dashicons-book-alt';
-    return $args;
-}
-add_filter('dwwp_post_type_args','dwwp_alter_book_icons');
