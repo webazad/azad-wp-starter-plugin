@@ -24,8 +24,7 @@ if ( ! class_exists( 'Activator' ) ) :
 			$azad_starter_plugin_installed = get_option( 'azad_starter_plugin_installed' );
 			if( ! $azad_starter_plugin_installed ){
 				update_option( 'azad_starter_plugin_installed', time() );
-			}
-			update_option( 'azad_wp_starter_plugin_version', AZAD_WP_STARTER_PLUGIN_VERSION );
+			}			
         }
         //public function __destruct() {
     }
