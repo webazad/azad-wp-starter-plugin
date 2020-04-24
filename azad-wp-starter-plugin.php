@@ -143,25 +143,8 @@ if(! function_exists('load_azad_wp_starter_plugin')){
 }
 $GLOBALS['load_azad_wp_starter_plugin'] = load_azad_wp_starter_plugin();
 
-register_activation_hook(__FILE__,array('AlicadddPlugin','activate_plugin'));
+require_once ARR_PATH . 'class-register-role.php';
+register_activation_hook( __FILE__, array( 'ARR_Activator', 'activate_plugin' ) );
+
 register_deactivation_hook(__FILE__,array('AlicadddPlugin','deactivate_plugin'));
 register_uninstall_hook(__FILE__,array('AlicadddPlugin','uninstall_plugin'));
-
-if ( ! function_exists( 'ast_safe_welcome_redirect' ) ) {
-	add_action( 'admin_init', 'ast_safe_welcome_redirect' );
-	function ast_safe_welcome_redirect() {
-		if ( ! get_transient( '_welcome_redirect_ast' ) ) {
-			return;
-		}
-		delete_transient( '_welcome_redirect_ast' );
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
-			return;
-		}
-		wp_safe_redirect( add_query_arg(
-			array(
-				'page' => 'azad_scroll_top_settings_page'
-				),
-			admin_url( 'admin.php' )
-		) );
-	}
-}
